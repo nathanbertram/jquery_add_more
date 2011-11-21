@@ -1,3 +1,7 @@
+# TODO
+1. Jquery plugin-fy, namespace better and make extendable
+2. Enable sortable fields
+
 # Usage for Pattern
 1. Add jquery.add_more.js to /assets/javascripts/
 2. 
@@ -21,6 +25,4 @@
 %li
   = link_to 'Add Another', '#', :class => 'add_multiples_link', 'data-group' => 'guest_categories', 'data-attribute-key' => 'guest_categories_attributes'
   
-# TODO
-1. Jquery plugin-fy, namespace better and make extendable
   
