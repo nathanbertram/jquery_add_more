@@ -10,7 +10,7 @@
   });
 
 3. Setup your model at accept nested attributes:
-  class GuestCategory < ActiveRecord::Base
+  class Table < ActiveRecord::Base
     has_many :guest_categories
     
     accepts_nested_attributes_for :guest_categories, :reject_if => :all_blank, :allow_destroy => true
