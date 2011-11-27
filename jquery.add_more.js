@@ -11,6 +11,7 @@ function add_another_mangement() {
     // clear out textareas
     $('.add_multiples[data-group='+data_group+']:last textarea').each(function(){
       $(this).text('');
+      $(this).attr('name', $(this).attr('name').replace(attribute_re, '['+attribute_key+']['+new_object_id+']'));
     });
     
     // Clear out inputs
@@ -35,7 +36,6 @@ function add_another_mangement() {
     delete_button_check();
     return false;
   });
-  
 }
 
 function delete_button_check(){
