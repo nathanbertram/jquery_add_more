@@ -16,7 +16,7 @@ function add_another_mangement() {
     
     // Clear out inputs
     $('.add_multiples[data-group='+data_group+']:last input').each(function(){
-      $(this).attr('value', '');
+      if(!$(this).attr('type').match(/radio|check/)) $(this).attr('value', '');
       $(this).attr('name', $(this).attr('name').replace(attribute_re, '['+attribute_key+']['+new_object_id+']'));
     });
     
