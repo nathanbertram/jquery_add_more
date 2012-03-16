@@ -14,6 +14,11 @@ function add_another_mangement() {
       $(this).attr('name', $(this).attr('name').replace(attribute_re, '['+attribute_key+']['+new_object_id+']'));
     });
     
+    // When you add another row - remove stuff you no want
+    $('.add_multiples[data-group='+data_group+']:last .remove_contents').each(function(){
+      $(this).remove();
+    });
+    
     // Clear out inputs
     $('.add_multiples[data-group='+data_group+']:last input').each(function(){
       if(!$(this).attr('type').match(/radio|check/)) $(this).attr('value', '');
