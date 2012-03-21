@@ -8,21 +8,27 @@ function add_another_mangement() {
     var new_elem = $('.add_multiples[data-group='+data_group+']:visible').last().clone(true).insertAfter($('.add_multiples[data-group='+data_group+']:last'));
     var attribute_re = new RegExp("\\["+attribute_key+"\\]\\[([0-9])+\\]");
           
-    // clear out textareas
+    // Clear out textareas & rename
     $('.add_multiples[data-group='+data_group+']:last textarea').each(function(){
       $(this).text('');
+      $(this).attr('name', $(this).attr('name').replace(attribute_re, '['+attribute_key+']['+new_object_id+']'));
+    });
+    
+    // Rename selects
+    $(add_multiples_selector + ':last select').each(function(){
+      $(this).attr('name', $(this).attr('name').replace(attribute_re, '['+attribute_key+']['+new_object_id+']'));
+    });
+    
+    
+    // Clear out inputs & rename
+    $('.add_multiples[data-group='+data_group+']:last input').each(function(){
+      if(!$(this).attr('type').match(/radio|check/)) $(this).attr('value', '');
       $(this).attr('name', $(this).attr('name').replace(attribute_re, '['+attribute_key+']['+new_object_id+']'));
     });
     
     // When you add another row - remove stuff you no want
     $('.add_multiples[data-group='+data_group+']:last .remove_contents').each(function(){
       $(this).remove();
-    });
-    
-    // Clear out inputs
-    $('.add_multiples[data-group='+data_group+']:last input').each(function(){
-      if(!$(this).attr('type').match(/radio|check/)) $(this).attr('value', '');
-      $(this).attr('name', $(this).attr('name').replace(attribute_re, '['+attribute_key+']['+new_object_id+']'));
     });
     
     delete_button_check();
