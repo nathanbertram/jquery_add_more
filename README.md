@@ -5,7 +5,7 @@
 
 # Usage
 
-1. Add jquery.add_more.js to /assets/javascripts/
+1. Add `jquery.add_more.js` to /assets/javascripts/
 
 2. Add this to the appropriate views
 
