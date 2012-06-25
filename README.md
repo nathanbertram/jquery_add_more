@@ -8,7 +8,6 @@
 1. Add `jquery.add_more.js` to /assets/javascripts/
 
 2. Add this to the appropriate views
-
 ```javascript
   $(document).ready(function(){
     add_another_mangement();
