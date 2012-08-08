@@ -37,6 +37,7 @@
       return false;
     });
   };
+  window.add_another_mangement = add_another_mangement;
   delete_button_check = function() {
     var data_groups;
     data_groups = [];
