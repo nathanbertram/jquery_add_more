@@ -1,4 +1,4 @@
-add_another_mangement = ->
+add_another_mangement = (callback) ->
   delete_button_check()
   $(".add_multiples_link").click ->
     data_group = $(this).attr("data-group")
@@ -29,6 +29,7 @@ add_another_mangement = ->
     $(this).remove()
 
     delete_button_check()
+    callback(new_elem) if arguments.length == 1
     false
 
   $(".remove_fieldset_link").live "click", ->
