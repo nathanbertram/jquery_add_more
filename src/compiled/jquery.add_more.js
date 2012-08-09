@@ -29,7 +29,7 @@
       $(this).trigger('add_more:add_multiples_complete');
       return false;
     });
-    return $(".remove_fieldset_link").live("click", function() {
+    $(".remove_fieldset_link").live("click", function() {
       var destroy_elem;
       destroy_elem = $(this).closest(".add_multiples").find("input[type=checkbox]");
       if (destroy_elem.length === 0) {
@@ -41,6 +41,7 @@
       delete_button_check();
       return false;
     });
+    return false;
   };
   delete_button_check = function() {
     var data_groups;
@@ -48,7 +49,7 @@
     $(".add_multiples").each(function() {
       return data_groups.push($(this).attr("data-group"));
     });
-    return $.each($.unique(data_groups), function(index, data_group) {
+    $.each($.unique(data_groups), function(index, data_group) {
       var parent;
       parent = $(".add_multiples[data-group=" + data_group + "]");
       if ($(".add_multiples[data-group=" + data_group + "]:visible").size() === 1) {
@@ -57,6 +58,7 @@
         return parent.find(".remove_fieldset_link").show();
       }
     });
+    return false;
   };
   window.delete_button_check = delete_button_check;
   window.add_another_mangement = add_another_mangement;
