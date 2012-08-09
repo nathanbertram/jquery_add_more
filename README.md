@@ -25,4 +25,6 @@
 %li
   = link_to 'Add Another', '#', :class => 'add_multiples_link', 'data-group' => 'guest_categories', 'data-attribute-key' => 'guest_categories_attributes'
   
-  
+# Contributors
+* Nathan Bertram (@nathanbertram)
+* Will Cosgrove (@willcosgrove)
