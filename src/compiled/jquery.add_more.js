@@ -1,6 +1,6 @@
 (function() {
   var add_another_mangement, delete_button_check;
-  add_another_mangement = function(callback) {
+  add_another_mangement = function() {
     delete_button_check();
     $(".add_multiples_link").click(function() {
       var attribute_key, attribute_re, data_group, new_elem, new_object_id;
@@ -26,9 +26,7 @@
         return $(this).remove();
       });
       delete_button_check();
-      if (arguments.length === 1) {
-        callback(new_elem);
-      }
+      $(this).trigger('add_more:add_multiples_complete');
       return false;
     });
     return $(".remove_fieldset_link").live("click", function() {
