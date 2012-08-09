@@ -42,6 +42,8 @@ add_another_mangement = ->
     delete_button_check()
     false
 
+  false
+
 delete_button_check = ->
   data_groups = []
   $(".add_multiples").each ->
@@ -53,6 +55,8 @@ delete_button_check = ->
       parent.find(".remove_fieldset_link").hide()
     else
       parent.find(".remove_fieldset_link").show()
+
+  false
 
 window.delete_button_check = delete_button_check
 window.add_another_mangement = add_another_mangement
