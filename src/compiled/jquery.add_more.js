@@ -9,18 +9,22 @@
       new_object_id = new Date().getTime();
       new_elem = $(".add_multiples[data-group=" + data_group + "]:visible").last().clone(true).insertAfter($(".add_multiples[data-group=" + data_group + "]:last"));
       attribute_re = new RegExp("\\[" + attribute_key + "\\]\\[([0-9])+\\]");
-      $(".add_multiples[data-group=" + data_group + "]:last textarea").each(function() {});
-      $(this).text("");
-      $(this).attr("name", $(this).attr("name").replace(attribute_re, "[" + attribute_key + "][" + new_object_id + "]"));
-      $(add_multiples_selector + ":last select").each(function() {});
-      $(this).attr("name", $(this).attr("name").replace(attribute_re, "[" + attribute_key + "][" + new_object_id + "]"));
-      $(".add_multiples[data-group=" + data_group + "]:last input").each(function() {});
-      if (!$(this).attr("type").match(/radio|check/)) {
-        $(this).attr("value", "");
-      }
-      $(this).attr("name", $(this).attr("name").replace(attribute_re, "[" + attribute_key + "][" + new_object_id + "]"));
-      $(".add_multiples[data-group=" + data_group + "]:last .remove_contents").each(function() {});
-      $(this).remove();
+      $(".add_multiples[data-group=" + data_group + "]:last textarea").each(function() {
+        $(this).text("");
+        return $(this).attr("name", $(this).attr("name").replace(attribute_re, "[" + attribute_key + "][" + new_object_id + "]"));
+      });
+      $(add_multiples_selector + ":last select").each(function() {
+        return $(this).attr("name", $(this).attr("name").replace(attribute_re, "[" + attribute_key + "][" + new_object_id + "]"));
+      });
+      $(".add_multiples[data-group=" + data_group + "]:last input").each(function() {
+        if (!$(this).attr("type").match(/radio|check/)) {
+          $(this).attr("value", "");
+        }
+        return $(this).attr("name", $(this).attr("name").replace(attribute_re, "[" + attribute_key + "][" + new_object_id + "]"));
+      });
+      $(".add_multiples[data-group=" + data_group + "]:last .remove_contents").each(function() {
+        return $(this).remove();
+      });
       delete_button_check();
       if (arguments.length === 1) {
         callback(new_elem);
@@ -56,4 +60,6 @@
       }
     });
   };
+  window.delete_button_check = delete_button_check;
+  window.add_another_mangement = add_another_mangement;
 }).call(this);
