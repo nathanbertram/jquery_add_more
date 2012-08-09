@@ -9,24 +9,24 @@ add_another_mangement = ->
 
     # Clear out textareas & rename
     $(".add_multiples[data-group=" + data_group + "]:last textarea").each ->
-    $(this).text ""
-    $(this).attr "name", $(this).attr("name").replace(attribute_re, "[" + attribute_key + "][" + new_object_id + "]")
+      $(this).text ""
+      $(this).attr "name", $(this).attr("name").replace(attribute_re, "[" + attribute_key + "][" + new_object_id + "]")
 
 
     # Rename selects
     $(add_multiples_selector + ":last select").each ->
-    $(this).attr "name", $(this).attr("name").replace(attribute_re, "[" + attribute_key + "][" + new_object_id + "]")
+      $(this).attr "name", $(this).attr("name").replace(attribute_re, "[" + attribute_key + "][" + new_object_id + "]")
 
 
     # Clear out inputs & rename
     $(".add_multiples[data-group=" + data_group + "]:last input").each ->
-    $(this).attr "value", ""  unless $(this).attr("type").match(/radio|check/)
-    $(this).attr "name", $(this).attr("name").replace(attribute_re, "[" + attribute_key + "][" + new_object_id + "]")
+      $(this).attr "value", ""  unless $(this).attr("type").match(/radio|check/)
+      $(this).attr "name", $(this).attr("name").replace(attribute_re, "[" + attribute_key + "][" + new_object_id + "]")
 
 
     # When you add another row - remove stuff you no want
     $(".add_multiples[data-group=" + data_group + "]:last .remove_contents").each ->
-    $(this).remove()
+      $(this).remove()
 
     delete_button_check()
     false
