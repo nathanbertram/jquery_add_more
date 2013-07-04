@@ -1,5 +1,5 @@
-add_another_mangement = ->
-  delete_button_check()
+jqueryAddMore = ->
+  jqueryAddMoreDeleteButtonCheck()
   $(".add_multiples_link").click ->
     data_group = $(this).attr("data-group")
     attribute_key = $(this).attr("data-attribute-key")
@@ -28,7 +28,7 @@ add_another_mangement = ->
     $(".add_multiples[data-group=" + data_group + "]:last .remove_contents").each ->
       $(this).remove()
 
-    delete_button_check()
+    jqueryAddMoreDeleteButtonCheck()
     $(this).trigger('add_more:add_multiples_complete')
     false
 
@@ -39,12 +39,12 @@ add_another_mangement = ->
     else
       destroy_elem.attr "checked", "checked"
       $(this).closest(".add_multiples").hide()
-    delete_button_check()
+    jqueryAddMoreDeleteButtonCheck()
     false
 
   false
 
-delete_button_check = ->
+jqueryAddMoreDeleteButtonCheck = ->
   data_groups = []
   $(".add_multiples").each ->
     data_groups.push $(this).attr("data-group")
@@ -58,5 +58,5 @@ delete_button_check = ->
 
   false
 
-window.delete_button_check = delete_button_check
-window.add_another_mangement = add_another_mangement
+window.jqueryAddMoreDeleteButtonCheck = jqueryAddMoreDeleteButtonCheck
+window.jqueryAddMore = jqueryAddMore
