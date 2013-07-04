@@ -1,14 +1,17 @@
 jqueryAddMore = ->
   jqueryAddMoreDeleteButtonCheck()
-  $(".add-multiples-link").click ->
+  $("body").on 'click', '.add-multiples-link', ->
+    add_multiples_selector = '.add-multiples'
+
     data_group = $(this).attr("data-group")
     attribute_key = $(this).attr("data-attribute-key")
+
     new_object_id = new Date().getTime()
-    new_elem = $(".add-multiples[data-group=" + data_group + "]:visible").last().clone(true).insertAfter($(".add-multiples[data-group=" + data_group + "]:last"))
+    new_elem = $(add_multiples_selector + "[data-group=" + data_group + "]:visible").last().clone(true).insertAfter($(add_multiples_selector + "[data-group=" + data_group + "]:last"))
     attribute_re = new RegExp("\\[" + attribute_key + "\\]\\[([0-9])+\\]")
 
     # Clear out textareas & rename
-    $(".add-multiples[data-group=" + data_group + "]:last textarea").each ->
+    $(add_multiples_selector + "[data-group=" + data_group + "]:last textarea").each ->
       $(this).text ""
       $(this).attr "name", $(this).attr("name").replace(attribute_re, "[" + attribute_key + "][" + new_object_id + "]")
 
@@ -17,26 +20,28 @@ jqueryAddMore = ->
       $(this).attr "name", $(this).attr("name").replace(attribute_re, "[" + attribute_key + "][" + new_object_id + "]")
 
     # Clear out inputs & rename
-    $(".add-multiples[data-group=" + data_group + "]:last input").each ->
+    $(add_multiples_selector + "[data-group=" + data_group + "]:last input").each ->
       $(this).attr "value", ""  unless $(this).attr("type").match(/radio|check/)
       $(this).attr "name", $(this).attr("name").replace(attribute_re, "[" + attribute_key + "][" + new_object_id + "]")
 
 
     # When you add another row - remove stuff you no want
-    $(".add-multiples[data-group=" + data_group + "]:last .remove_contents").each ->
+    $(add_multiples_selector + "[data-group=" + data_group + "]:last .remove_contents").each ->
       $(this).remove()
 
     jqueryAddMoreDeleteButtonCheck()
     $(this).trigger('add_more:add_multiples_complete')
     false
 
-  $(".remove-multiples-link").live "click", ->
+  $("body").on "click", ".remove-multiples-link", ->
+    add_multiples_selector = '.add-multiples'
+      
     destroy_elem = $(this).closest(".add-multiples").find("input[type=checkbox]")
     if destroy_elem.length is 0
-      $(this).closest(".add-multiples").remove()
+      $(this).closest(add_multiples_selector).remove()
     else
       destroy_elem.attr "checked", "checked"
-      $(this).closest(".add-multiples").hide()
+      $(this).closest(add_multiples_selector).hide()
     jqueryAddMoreDeleteButtonCheck()
     $(this).trigger('add_more:remove_multiples_complete')
 
